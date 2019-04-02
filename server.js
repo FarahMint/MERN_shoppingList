@@ -18,7 +18,7 @@ const db = require("./config/keys").mongoURI;
 // ————CONNECT TO MONGODB
 
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI || db, { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
@@ -27,7 +27,7 @@ app.use("/api/items", items);
 //anything that goes to api/items should refer to the items var
 //===>[ which is the file mentioned above  -> const items =require("./routes/api/items") ]
 
-// serve static folder if in production
+//Serve static folder if in production
 if (process.env.NODE_ENV === "production") {
   //set static folder
   app.use(express.static("client/build"));
