@@ -6,15 +6,22 @@ const initialState = {};
 
 const middleware = [thunk];
 
+const composeEnhancers =
+  typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+    : compose;
+
+const composingMiddlewareAndDevTools = composeEnhancers(
+  applyMiddleware(...middleware)
+);
+// https://github.com/zalmoxisus/redux-devtools-extension#usage
+
 const store = createStore(
   rootReducer,
   initialState,
-  compose(
-    applyMiddleware(...middleware),
-    // in order to use the redux dev tool
-
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  composingMiddlewareAndDevTools
 );
+
+console.log(store.getState());
 
 export default store;
