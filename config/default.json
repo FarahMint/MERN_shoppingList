@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://farahmint:farahmint123@cluster0-ng4ig.mongodb.net/test?retryWrites=true",
+  "jwtSecret": "react_mern_secret"
+}

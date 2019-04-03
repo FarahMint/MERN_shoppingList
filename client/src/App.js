@@ -8,10 +8,14 @@ import ItemModal from "./components/itemModal";
 
 import { Provider } from "react-redux";
 import store from "./store";
+import { loadUser } from "./actions/auth_action";
 
 import "./App.css";
 
 class App extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
   render() {
     return (
       <Provider store={store}>

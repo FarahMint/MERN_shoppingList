@@ -7,6 +7,8 @@ const router = express.Router();
 //Item Model
 const Item = require("../../model/Item");
 
+const auth = require("../../middleware/auth");
+
 // CREATE ROUTES
 
 //@route GET api/items
@@ -48,9 +50,9 @@ router.get("/:id", (req, res) => {
 
 //@route POST api/items
 // @desc  create POST /an item
-//@ access Public
+//@ access Private
 
-router.post("/", (req, res) => {
+router.post("/", auth, (req, res) => {
   // Construct an obj to insert into the DB
   //Create const newItem & set it = to new Item() because Item is the name of our model
 
@@ -96,10 +98,10 @@ router.put("/:id", (req, res) => {
 
 //@route DELETE api/items/:id
 // @desc  delete  an item
-//@ access Public
+//@ access Private
 
 // placeholder :id for whatever we pass as an id
-router.delete("/:id", (req, res) => {
+router.delete("/:id", auth, (req, res) => {
   //To delete an item from the DB - need an unique ID
   //Get it from the url by passing req.params.id - this will actually fetch from the URI
   Item.findById(req.params.id)
