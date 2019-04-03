@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://farahmint:farahmint123@cluster0-ng4ig.mongodb.net/test?retryWrites=true",
+  "mongoURI": "mongodb://farahmint:farahmint123@ds137530.mlab.com:37530/mernshop",
   "jwtSecret": "react_mern_secret"
 }
