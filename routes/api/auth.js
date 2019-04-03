@@ -29,6 +29,7 @@ router.post("/", (req, res) => {
     bcrypt.compare(password, user.password).then(isMatch => {
       if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
 
+      //   process.env.JWT_SECRET || config.get("jwtSecret"),
       // create token
       jwt.sign(
         {
